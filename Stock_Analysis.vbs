@@ -46,8 +46,8 @@ Sub Stock_Analysis():
             
             Cells(counter, 9).Value = ticketname
             Cells(counter, 12).Value = volume
-            Cells(counter, 10).Value = firstPrice - lastPrice
-            
+            Cells(counter, 10).Value = lastPrice - firstPrice
+            Cells(counter, 11).Value = ((lastPrice - firstPrice) / firstPrice) * 100
             
             counter = counter + 1
             

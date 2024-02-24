@@ -9,6 +9,15 @@ Sub Stock_Analysis():
     ' declare variables where the price are going to be stored
     Dim firstPrice As Double
     Dim lastPrice As Double
+    ' declare variables where the max and min values are going to be stored
+    Dim maxchange As Double
+    Dim minchange As Double
+    Dim maxvol As Double
+    
+    maxchange = 0
+    minchange = 0
+    maxvol = 0
+    
     
     'function that finds the last value of the table
     lastrow = Cells(Rows.Count, 1).End(xlUp).Row
@@ -19,13 +28,19 @@ Sub Stock_Analysis():
     lastPrice = 0
 
     
-    'this section just set the title of each column
+    'this section just set the title of each column and rows
     
     Range("I1").Value = "Ticker"
     Range("J1").Value = "Yearly Change"
     Range("K1").Value = "Percent Change"
     Range("L1").Value = "Total Stock Volume"
-
+    
+    Range("O2").Value = "Greatest % Increase"
+    Range("O3").Value = "Greatest % Decrease"
+    Range("O4").Value = "Greatest Total Volume"
+    
+    Range("P1").Value = "Ticker"
+    Range("Q1").Value = "Value"
 
 
     ' this loops throu all of the ticker column and finds differences and then prints the diferent
@@ -99,8 +114,30 @@ Sub Stock_Analysis():
                 
         End If
         
+        
+        ' Conditions that loops throu the greatest percentage change increase and decrease and also biggest volume of stock
+        If Cells(i, 11).Value > maxchange Then
+        
+            maxchange = Cells(i, 11).Value
+            Range("P2").Value = Cells(i, 9).Value
+            Range("Q2").Value = Cells(i, 11).Value
+            Range("Q2").NumberFormat = "0.00%"
+        
+        ElseIf Cells(i, 11).Value < minchange Then
+        
+            minchange = Cells(i, 11).Value
+            Range("P3").Value = Cells(i, 9).Value
+            Range("Q3").Value = Cells(i, 11).Value
+            Range("Q3").NumberFormat = "0.00%"
+            
+        ElseIf Cells(i, 12).Value > maxvol Then
+        
+            maxvol = Cells(i, 12).Value
+            Range("P4").Value = Cells(i, 9).Value
+            Range("Q4").Value = Cells(i, 12).Value
+        
+        End If
     
     Next i
     
-
 End Sub

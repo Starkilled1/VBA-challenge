@@ -5,13 +5,23 @@ Sub Stock_Analysis():
     ' declare a variable that will store the ticket name
     Dim ticketname As String
     
+    ' declare volume variable that stores the sum of stock
     Dim volume As Double
+    
+    Dim firstPrice As Double
+    Dim lastPrice As Double
+    Dim datenumber As Integer
+    
+    
+    
     
     'function that finds the last value of the table
     lastrow = Cells(Rows.Count, 1).End(xlUp).Row
     
     counter = 2
     volume = 0
+    firstPrice = 0
+    lastPrice = 0
 
     
     
@@ -39,8 +49,12 @@ Sub Stock_Analysis():
             'this sums the last ticker
             volume = volume + Cells(i, 7).Value
             
+            lastPrice = Cells(i, 6).Value
+            
             Cells(counter, 9).Value = ticketname
             Cells(counter, 12).Value = volume
+            Cells(counter, 10).Value = firstPrice - lastPrice
+            
             
             counter = counter + 1
             
@@ -54,9 +68,6 @@ Sub Stock_Analysis():
         
         End If
     Next i
-    
-
-    
     
     
 

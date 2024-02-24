@@ -12,6 +12,7 @@ Sub Stock_Analysis():
     
     'function that finds the last value of the table
     lastrow = Cells(Rows.Count, 1).End(xlUp).Row
+    lastrowJ = Cells(Rows.Count, 10).End(xlUp).Row
     counter = 2
     volume = 0
     firstPrice = 0
@@ -47,12 +48,14 @@ Sub Stock_Analysis():
             Cells(counter, 9).Value = ticketname
             Cells(counter, 12).Value = volume
             Cells(counter, 10).Value = lastPrice - firstPrice
-            Cells(counter, 11).Value = ((lastPrice - firstPrice) / firstPrice) * 100
+            Cells(counter, 11).Value = ((lastPrice - firstPrice) / firstPrice)
+            Cells(counter, 11).NumberFormat = "0.00%"
             
             counter = counter + 1
             
             'clear the variable when the new ticker it's counted
             volume = 0
+            
             
         Else
         
@@ -78,5 +81,26 @@ Sub Stock_Analysis():
         
         
     Next i
+    
+    For i = 2 To lastrowJ
+    
+        'conditional formating to change the cell color to red if negative and green if positive
+        If Cells(i, 10).Value > 0 Then
+            
+            Cells(i, 10).Interior.Color = RGB(0, 255, 0)
+            
+        ElseIf Cells(i, 10).Value = 0 Then
+            
+            Cells(i, 10).Interior.Color = RGB(125, 126, 133)
+            
+        Else
+            
+            Cells(i, 10).Interior.Color = RGB(255, 0, 0)
+                
+        End If
+        
+    
+    Next i
+    
 
 End Sub

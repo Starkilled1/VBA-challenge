@@ -17,6 +17,7 @@ Note: Make sure to enable macros in Excel to run the VBA script successfully.
 
 ## Contents:
 
+- VBAScript: Stock_Analysis visual basic script
 - Results_year: Results Screenshots 
 - README.md: Documentation providing an overview of the repository and instructions for usage.
 - Multiple_year_stock_data.xlsm: Excel workbook containing stock price information from 2018 to 2020.

@@ -24,7 +24,7 @@ Sub Stock_Analysis():
 
         'function that finds the last value of the table
         lastrow = Cells(ws.Rows.Count, 1).End(xlUp).Row
-        lastrowJ = Cells(ws.Rows.Count, 10).End(xlUp).Row
+
         counter = 2
         volume = 0
         firstPrice = 0
@@ -99,6 +99,9 @@ Sub Stock_Analysis():
             
             
         Next i
+
+        'Since it need to first create the table, this variable needs to be declared after the table is created
+        lastrowJ = Cells(ws.Rows.Count, 10).End(xlUp).Row
         
         For i = 2 To lastrowJ
         
